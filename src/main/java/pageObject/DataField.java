@@ -42,42 +42,6 @@ public class DataField {
         return sheet.getRow(row).getCell(column).getStringCellValue();
     }
 
-    public String getDataValue(int row, int column) {
-        sheet = work_book.getSheetAt(0);
-        return sheet.getRow(row).getCell(column).getRawValue();
-    }
-
-    public String getDataDate(int row, int column) {
-        sheet = work_book.getSheetAt(0);
-        Cell cell = sheet.getRow(row).getCell(column);
-        String value = "";
-        if (cell != null) {
-            switch (cell.getCellType()) {
-                case NUMERIC:
-                    if (DateUtil.isCellDateFormatted(cell)) {
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        value = sdf.format(cell.getDateCellValue());
-                    } else {
-                        value = String.valueOf(cell.getNumericCellValue());
-                    }
-                    break;
-                case STRING:
-                    value = cell.getStringCellValue();
-                    break;
-                case BOOLEAN:
-                    value = String.valueOf(cell.getBooleanCellValue());
-                    break;
-                case FORMULA:
-                    value = cell.getCellFormula();
-                    break;
-                default:
-                    value = "";
-                    break;
-            }
-        }
-        return value;
-    }
-
     public int getRowCount(int sheetIndex) {
         int row = work_book.getSheetAt(sheetIndex).getLastRowNum();
         row = row + 1;
