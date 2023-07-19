@@ -1,5 +1,6 @@
 package demo;
 
+import com.beust.ah.A;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -48,7 +49,7 @@ public class TestClass extends CommonPageObject {
     }
 
     @Test
-    public void testInputField() {
+    public void testPersonalDetail() {
         testLogin();
         clearThenSendKeys(middleNameField, dataField.getData(1, 2), true);
         clearThenSendKeys(lastNameField, dataField.getData(1, 3), true);
@@ -66,12 +67,27 @@ public class TestClass extends CommonPageObject {
 
         clearThenSendKeys(dateOfBirthField, dataField.getData(1, 10), true).pause(5000);
         click(Objects.equals(dataField.getData(1, 11), "Female") ? femaleOption : maleOption, true);
+        try {
+            if (femaleOption.isSelected()) {
+                Assert.assertEquals( femaleOption.isSelected(), true );
+                Assert.assertEquals( maleOption.isDisplayed(), true );
+            } else if (maleOption.isSelected()) {
+                Assert.assertEquals( maleOption.isSelected(), true );
+                Assert.assertEquals( femaleOption.isDisplayed(),true );
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred while checking the selected radio input element");
+        }
         clearThenSendKeys(militaryServiceField, dataField.getData(1, 12), true).pause(2000);
 
         uncheck(smokerOption, smokeLabel, false);
+        Assert.assertEquals( smokeLabel.isDisplayed(), true );
         click(userNavTopRightDropdown, true);
         click(userNavTopRightDropdownLogout, true);
     }
+
+    @Test
+
 
     @After
     public void tearDown() {
