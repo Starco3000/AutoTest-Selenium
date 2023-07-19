@@ -42,7 +42,7 @@ public class TestClass extends CommonPageObject {
     }
 
     @Test
-    public void testLogin() {
+    public void testMyInfoAccess() {
         testFormLogin();
         click(myInfoLocationSidebar, true).pause(500);
         Assert.assertEquals("My Info", myInfoLocationSidebar.getText());
@@ -50,35 +50,38 @@ public class TestClass extends CommonPageObject {
 
     @Test
     public void testPersonalDetail() {
-        testLogin();
-        clearThenSendKeys(middleNameField, dataField.getData(1, 2), true);
-        clearThenSendKeys(lastNameField, dataField.getData(1, 3), true);
-        clearThenSendKeys(nickNameField, dataField.getData(1, 4), true);
-        clearThenSendKeys(employeeIdField, dataField.getData(1, 5), true);
-        clearThenSendKeys(otherIdField, dataField.getData(1, 6), true);
-        clearThenSendKeys(driverLicenseField, dataField.getData(1, 7), true);
-        clearThenSendKeys(licenseExpiryDate, dataField.getData(1, 8), true).pause(5000);
-        clearThenSendKeys(ssnNumField, dataField.getData(1, 9), true);
+        testMyInfoAccess();
+        clearThenSendKeys( firstNameField, dataField.getData(1,2), true);
+        clearThenSendKeys(middleNameField, dataField.getData(1, 3), true);
+        clearThenSendKeys(lastNameField, dataField.getData(1, 4), true);
+        clearThenSendKeys(nickNameField, dataField.getData(1, 5), true);
+        clearThenSendKeys(employeeIdField, dataField.getData(1, 6), true);
+        clearThenSendKeys(otherIdField, dataField.getData(1, 7), true);
+        clearThenSendKeys(driverLicenseField, dataField.getData(1, 8), true);
+        clearThenSendKeys(licenseExpiryDate, dataField.getData(1, 9), true).pause(500);
+        clearThenSendKeys(ssnNumField, dataField.getData(1, 10), true);
 
         click(nationalityField, true).pause(500);
         click(nationalityOption, true).pause(500);
         click(materialStatusField, true).pause(500);
         click(materialStatusOptions, true).pause(500);
 
-        clearThenSendKeys(dateOfBirthField, dataField.getData(1, 10), true).pause(5000);
-        click(Objects.equals(dataField.getData(1, 11), "Female") ? femaleOption : maleOption, true);
+        clearThenSendKeys(dateOfBirthField, dataField.getData(1, 14), true).pause(500);
+        click(Objects.equals(dataField.getData(1, 15), "Female") ? femaleOption : maleOption, true);
         try {
             if (femaleOption.isSelected()) {
                 Assert.assertEquals( femaleOption.isSelected(), true );
                 Assert.assertEquals( maleOption.isDisplayed(), true );
+                pause( 500 );
             } else if (maleOption.isSelected()) {
                 Assert.assertEquals( maleOption.isSelected(), true );
                 Assert.assertEquals( femaleOption.isDisplayed(),true );
+                pause( 500 );
             }
         } catch (Exception e) {
             System.out.println("An error occurred while checking the selected radio input element");
         }
-        clearThenSendKeys(militaryServiceField, dataField.getData(1, 12), true).pause(2000);
+        clearThenSendKeys(militaryServiceField, dataField.getData(1, 16), true).pause(1000);
 
         uncheck(smokerOption, smokeLabel, false);
         Assert.assertEquals( smokeLabel.isDisplayed(), true );
@@ -87,6 +90,44 @@ public class TestClass extends CommonPageObject {
     }
 
     @Test
+    public void testContactDetail() {
+        testMyInfoAccess();
+        click( contactDetail, true );
+
+        clearThenSendKeys( street1Field, dataField.getData(7, 0), true);
+        clearThenSendKeys( street2Field, dataField.getData(7, 1), true);
+        clearThenSendKeys( cityField, dataField.getData(7, 2), true);
+        clearThenSendKeys( stateField, dataField.getData(7, 3), true);
+        clearThenSendKeys( postalcodeField, dataField.getData(7, 4), true);
+        click( countryOption, true );
+        click( countrySelect, true );
+        Assert.assertEquals( dataField.getData( 7, 5 ), countryOption.getText() );
+
+
+        clearThenSendKeys( homeTele, dataField.getData(7,6), true);
+        clearThenSendKeys( mobileTele, dataField.getData(7, 7), true);
+        clearThenSendKeys( workTele, dataField.getData(7, 8), true);
+        clearThenSendKeys( workEmail, dataField.getData(7, 9), true);
+        clearThenSendKeys( otherEmail, dataField.getData(7, 10), true);
+
+//        click( contactSaveBtn, true );
+    }
+
+    @Test
+    public void testEmergencyDetail() {
+        testMyInfoAccess();
+        click( emergencyContact, true );
+        click( addNewContact, true );
+
+        clearThenSendKeys( nameField, dataField.getData(12, 0), true );
+        clearThenSendKeys( relationshipField, dataField.getData(12, 1), true );
+        clearThenSendKeys( homeEmerTele, dataField.getData(12, 2), true );
+        clearThenSendKeys( mobileEmerTele, dataField.getData(12, 3), true );
+        clearThenSendKeys( workEmerTele, dataField.getData(12, 4), true );
+
+//        click( emerCancelBtn, true );
+//        click( emerSaveBtn, true );
+    }
 
 
     @After
