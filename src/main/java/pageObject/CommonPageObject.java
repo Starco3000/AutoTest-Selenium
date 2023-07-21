@@ -20,9 +20,6 @@ public class CommonPageObject extends XpathLink {
         PageFactory.initElements(driver, this);
     }
 
-    public void closeWeb() throws Exception {
-        driver.close();
-    }
 
     public CommonPageObject pause(long milisecond) {
         try {
@@ -78,34 +75,5 @@ public class CommonPageObject extends XpathLink {
             clickableElement.click();
         }
         return this;
-    }
-
-    public void waitUntilElementVisible(WebElement element) {
-        int tryTimes = 0;
-        while (tryTimes < 2) {
-            try {
-                wait.until(ExpectedConditions.visibilityOf(element));
-                break;
-            } catch (StaleElementReferenceException se) {
-                tryTimes++;
-                if (tryTimes == 2)
-                    throw se;
-            }
-        }
-    }
-
-    public void waitUntilElementVisible(String path) throws Exception {
-        int tryTimes = 0;
-        while (tryTimes < 2) {
-            try {
-                WebElement element = driver.findElement(By.xpath(path));
-                wait.until(ExpectedConditions.visibilityOf(element));
-                break;
-            } catch (StaleElementReferenceException se) {
-                tryTimes++;
-                if (tryTimes == 2)
-                    throw se;
-            }
-        }
     }
 }

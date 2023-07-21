@@ -42,23 +42,23 @@ public class DataField {
         return sheet.getRow(row).getCell(column).getStringCellValue();
     }
 
-    public int getRowCount(int sheetIndex) {
-        int row = work_book.getSheetAt(sheetIndex).getLastRowNum();
-        row = row + 1;
-        return row;
-    }
-
-    public void closeWorkBook() throws IOException {
-        stream.close();
-    }
-
-    public void write(String text, int row, int column) throws IOException {
-        var cell = sheet.getRow(row).createCell(column);
-        System.out.println(cell);
-        cell.setCellValue(text);
-        FileOutputStream output = new FileOutputStream(filePath);
-        work_book.write(output);
-        output.close();
-
-    }
+//    public int getRowCount(int sheetIndex) {
+//        int row = work_book.getSheetAt(sheetIndex).getLastRowNum();
+//        row = row + 1;
+//        return row;
+//    }
+//
+//    public void closeWorkBook() throws IOException {
+//        stream.close();
+//    }
+//
+//    public void write(String text, int row, int column) throws IOException {
+//        var cell = sheet.getRow(row).createCell(column);
+//        System.out.println(cell);
+//        cell.setCellValue(text);
+//        FileOutputStream output = new FileOutputStream(filePath);
+//        work_book.write(output);
+//        output.close();
+//
+//    }
 }
