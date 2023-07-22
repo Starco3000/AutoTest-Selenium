@@ -44,20 +44,20 @@ public class TestClass extends CommonPageObject {
     @Test
     public void testMyInfoAccess() {
         testFormLogin();
-        click(myInfoLocationSidebar, true).pause(500);
+        click(myInfoLocationSidebar, true).pause(1000);
         Assert.assertEquals("My Info", myInfoLocationSidebar.getText());
     }
 
     @Test
     public void testPersonalDetail() {
         testMyInfoAccess();
-        clearThenSendKeys( firstNameField, dataField.getData(1,2), true);
-        clearThenSendKeys(middleNameField, dataField.getData(1, 3), true);
-        clearThenSendKeys(lastNameField, dataField.getData(1, 4), true);
-        clearThenSendKeys(nickNameField, dataField.getData(1, 5), true);
-        clearThenSendKeys(employeeIdField, dataField.getData(1, 6), true);
-        clearThenSendKeys(otherIdField, dataField.getData(1, 7), true);
-        clearThenSendKeys(driverLicenseField, dataField.getData(1, 8), true);
+        clearThenSendKeys(firstNameField, dataField.getData(1,2), true).pause( 500 );
+        clearThenSendKeys(middleNameField, dataField.getData(1, 3), true).pause( 500 );
+        clearThenSendKeys(lastNameField, dataField.getData(1, 4), true).pause( 500 );
+        clearThenSendKeys(nickNameField, dataField.getData(1, 5), true).pause( 500 );
+        clearThenSendKeys(employeeIdField, dataField.getData(1, 6), true).pause( 500 );
+        clearThenSendKeys(otherIdField, dataField.getData(1, 7), true).pause( 500 );
+        clearThenSendKeys(driverLicenseField, dataField.getData(1, 8), true).pause( 500 );
         clearThenSendKeys(licenseExpiryDate, dataField.getData(1, 9), true).pause(500);
         clearThenSendKeys(ssnNumField, dataField.getData(1, 10), true);
 
@@ -94,21 +94,21 @@ public class TestClass extends CommonPageObject {
         testMyInfoAccess();
         click( contactDetail, true );
 
-        clearThenSendKeys( street1Field, dataField.getData(7, 0), true);
-        clearThenSendKeys( street2Field, dataField.getData(7, 1), true);
-        clearThenSendKeys( cityField, dataField.getData(7, 2), true);
-        clearThenSendKeys( stateField, dataField.getData(7, 3), true);
-        clearThenSendKeys( postalcodeField, dataField.getData(7, 4), true);
+        clearThenSendKeys( street1Field, dataField.getData(7, 0), true).pause( 500 );
+        clearThenSendKeys( street2Field, dataField.getData(7, 1), true).pause( 500 );
+        clearThenSendKeys( cityField, dataField.getData(7, 2), true).pause( 500 );
+        clearThenSendKeys( stateField, dataField.getData(7, 3), true).pause( 500 );
+        clearThenSendKeys( postalcodeField, dataField.getData(7, 4), true).pause( 500 );
         click( countryOption, true );
         click( countrySelect, true );
         Assert.assertEquals( dataField.getData( 7, 5 ), countryOption.getText() );
 
 
-        clearThenSendKeys( homeTele, dataField.getData(7,6), true);
-        clearThenSendKeys( mobileTele, dataField.getData(7, 7), true);
-        clearThenSendKeys( workTele, dataField.getData(7, 8), true);
-        clearThenSendKeys( workEmail, dataField.getData(7, 9), true);
-        clearThenSendKeys( otherEmail, dataField.getData(7, 10), true);
+        clearThenSendKeys( homeTele, dataField.getData(7,6), true).pause( 500 );
+        clearThenSendKeys( mobileTele, dataField.getData(7, 7), true).pause( 500 );
+        clearThenSendKeys( workTele, dataField.getData(7, 8), true).pause( 500 );
+        clearThenSendKeys( workEmail, dataField.getData(7, 9), true).pause( 500 );
+        clearThenSendKeys( otherEmail, dataField.getData(7, 10), true).pause( 500 );
 
 //        click( contactSaveBtn, true );
     }
@@ -119,11 +119,11 @@ public class TestClass extends CommonPageObject {
         click( emergencyContact, true );
         click( addNewContact, true );
 
-        clearThenSendKeys( nameField, dataField.getData(12, 0), true );
-        clearThenSendKeys( relationshipField, dataField.getData(12, 1), true );
-        clearThenSendKeys( homeEmerTele, dataField.getData(12, 2), true );
-        clearThenSendKeys( mobileEmerTele, dataField.getData(12, 3), true );
-        clearThenSendKeys( workEmerTele, dataField.getData(12, 4), true );
+        clearThenSendKeys( nameField, dataField.getData(12, 0), true ).pause( 500 );
+        clearThenSendKeys( relationshipField, dataField.getData(12, 1), true ).pause( 500 );
+        clearThenSendKeys( homeEmerTele, dataField.getData(12, 2), true ).pause( 500 );
+        clearThenSendKeys( mobileEmerTele, dataField.getData(12, 3), true ).pause( 500 );
+        clearThenSendKeys( workEmerTele, dataField.getData(12, 4), true ).pause( 500 );
 
 //        click( emerCancelBtn, true );
 //        click( emerSaveBtn, true );
