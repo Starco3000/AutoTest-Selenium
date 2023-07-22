@@ -11,11 +11,9 @@ import pageObject.DataField;
 import java.util.Objects;
 
 public class TestClass extends CommonPageObject {
-
     DataField dataField;
 
-    public TestClass() throws Exception {
-        super();
+    public TestClass() {
         dataField = new DataField("src/main/java/demo/dataTest.xls");
     }
 

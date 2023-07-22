@@ -134,10 +134,9 @@ public class CommonPageObject extends TestActions {
     public WebElement emerCancelBtn;
     @FindBy(how = How.XPATH, using = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/button[2]")
     public WebElement emerSaveBtn;
-//    public static WebDriver driver;
     public static WebDriverWait wait;
 
-    public CommonPageObject() throws Exception {
+    public CommonPageObject() {
         this.driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
