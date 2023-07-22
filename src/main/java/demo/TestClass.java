@@ -52,7 +52,7 @@ public class TestClass extends CommonPageObject {
         clearThenSendKeys(otherIdField, dataField.getData(1, 7), true).pause( 500 );
         clearThenSendKeys(driverLicenseField, dataField.getData(1, 8), true).pause( 500 );
         clearThenSendKeys(licenseExpiryDate, dataField.getData(1, 9), true).pause(500);
-        clearThenSendKeys(ssnNumField, dataField.getData(1, 10), true);
+//        clearThenSendKeys(ssnNumField, dataField.getData(1, 10), true);
 
         click(nationalityField, true).pause(500);
         click(nationalityOption, true).pause(500);
@@ -60,24 +60,20 @@ public class TestClass extends CommonPageObject {
         click(materialStatusOptions, true).pause(500);
 
         clearThenSendKeys(dateOfBirthField, dataField.getData(1, 14), true).pause(500);
-        click(Objects.equals(dataField.getData(1, 15), "Female") ? femaleOption : maleOption, true);
-        try {
-            if (femaleOption.isSelected()) {
-                Assert.assertEquals( femaleOption.isSelected(), true );
-                Assert.assertEquals( maleOption.isDisplayed(), true );
-                pause( 500 );
-            } else if (maleOption.isSelected()) {
-                Assert.assertEquals( maleOption.isSelected(), true );
-                Assert.assertEquals( femaleOption.isDisplayed(),true );
-                pause( 500 );
-            }
-        } catch (Exception e) {
-            System.out.println("An error occurred while checking the selected radio input element");
+        String gender = dataField.getData(1, 15);
+
+        if(Objects.equals(gender, "Female")){
+            click(femaleOption, true);
+            Assert.assertEquals( true, femaleInput.isSelected() );
+        }else {
+            click(maleOption , true);
+            Assert.assertEquals(true, maleInput.isSelected() );
         }
+
         clearThenSendKeys(militaryServiceField, dataField.getData(1, 16), true).pause(1000);
 
         uncheck(smokerOption, smokeLabel, false);
-        Assert.assertEquals( smokeLabel.isDisplayed(), true );
+        Assert.assertEquals( smokeLabel.isSelected(), false );
         click(userNavTopRightDropdown, true);
         click(userNavTopRightDropdownLogout, true);
     }
@@ -126,6 +122,6 @@ public class TestClass extends CommonPageObject {
     @After
     public void tearDown() {
         pause(2000);
-        driver.quit();
+//        driver.quit();
     }
 }
