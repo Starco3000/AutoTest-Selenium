@@ -13,21 +13,16 @@ import java.util.Objects;
 public class TestClass extends CommonPageObject {
 
     DataField dataField;
-    public WebDriverWait wait;
-    public WebDriver driver;
 
     public TestClass() throws Exception {
-        super(CommonPageObject.driver);
-        wait = CommonPageObject.wait;
-        driver = CommonPageObject.driver;
-
+        super();
         dataField = new DataField("src/main/java/demo/dataTest.xls");
     }
 
     @Before
     public void accessWebpage() {
-        driver.manage().window().maximize();
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        this.driver.manage().window().maximize();
+        this.driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
     @Test
